@@ -1,0 +1,37 @@
+基本正则：兼容性强，书写麻烦
+扩展正则：书写简单，兼容性差
+
+egrep "\b查找内容\b" 文件   #查找单个字符   “\b”： 单词边界
+
+[root@server0 ~]# egrep "\bthe\b" a.txt
+ajklsdklasjdklas the laksjdal;sd
+
+[root@server0 ~]# egrep "the\b" a.txt
+ajklsdklasjdklas the laksjdal;sd
+lkashdlkasd lkajsdasdlkasthe
+
+[root@server0 ~]# egrep "\bthe" a.txt
+theaslkdsakldk la;sldjas
+ajklsdklasjdklas the laksjdal;sd
+
+=========================================
+
+sed ： 非交互，基于模式匹配过滤及修改文本
+	逐行处理，并将结果输出到屏幕
+	可实现对文本的输出，删除，替换，复制，剪切，导入，导出等各种操作
+
+语法格式： sed 【选项】 ‘条件指令’ 文件...
+	    前置命令 | sed 【选项】 ‘条件指令’
+
+sed常见选项：
+	-n：屏蔽默认输出（全部文本）
+	]# sed -n '2p' /etc/passwd     # p 代表打印
+bin:x:1:1:bin:/bin:/sbin/nologin
+
+	-i:直接修改文件内容
+
+	-r：启用扩展的正则表达式，若与其他选项一起使用，应作为首个选项。
+
+sed -n '$=' 文件..  ==   cat 文件 |  wc -l   #输出文件的行
+
+
